@@ -38,7 +38,8 @@ def gpt_emb(doc_texts='', user_query=''):
   if not doc_texts: return ''
   # Download embeddings from OpenAI
   embeddings = OpenAIEmbeddings()
-  docsearch = FAISS.from_texts(doc_texts, embeddings)
+  # https://python.langchain.com/en/latest/index.html
+  docsearch = FAISS.from_texts(doc_texts, embeddings) 
   chain = load_qa_chain(OpenAI(), chain_type="stuff")
   docs = docsearch.similarity_search(user_query)
   return chain.run(input_documents=docs, question=user_query)
