@@ -16,6 +16,7 @@ def read_pdf(url=''):
   return ''.join(
     [ 
       page.extract_text() 
+      # GET pdf by url --> to bytes --> load by PdfReader
       for _,page in enumerate(PdfReader(io.BytesIO(req.get(url=url,timeout=120).content)).pages) 
       if page.extract_text()
     ]) 
