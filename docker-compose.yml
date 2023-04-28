@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+  gptapp:
+    container_name: gptapp
+    env_file:
+      - .env
+    environment:
+      TZ: America/Los_Angeles
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: gunicorn --timeout 1000 --preload -b 0.0.0.0:5000 api:gptapp -w 4
+    ports:
+      - 16060:5000
+   

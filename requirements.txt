@@ -1,0 +1,10 @@
+langchain
+openai==v0.27.0
+pypdf2
+faiss-cpu
+tiktoken
+python-dotenv
+flask
+gevent
+gunicorn
+validators
